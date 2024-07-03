@@ -62,7 +62,7 @@ Both deliverables share the same design system (`assets/css/styles.css`) so visi
 | **Static site (GitHub Pages)**                        | `https://QiratFatima0142.github.io/RealEstate-Web-Application/`                           |
 | **PHP app**                                           | Run locally with XAMPP or Docker - see [Running it locally](#9-running-it-locally).       |
 
-> Seeded demo accounts (PHP app): `qirat@estateease.test`, `aun@estateease.test`, `mehran@estateease.test` - password **`password`** for all.
+> Seeded demo account (PHP app): `qirat@estateease.test` - password **`password`**.
 
 ---
 

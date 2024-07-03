@@ -67,13 +67,11 @@ npx --yes serve public
    [`database/schema.sql`](../database/schema.sql) followed by
    [`database/seed.sql`](../database/seed.sql).
 5. Visit `http://localhost/estateease/index.php`.
-6. Sign in with any seeded account (password: `password`):
+6. Sign in with the seeded account (password: `password`):
 
    | Email                       | Role          |
    | --------------------------- | ------------- |
    | `qirat@estateease.test`     | Demo agent    |
-   | `aun@estateease.test`       | Demo agent    |
-   | `mehran@estateease.test`    | Demo agent    |
 
 ### Option B - PHP built-in server + MySQL
 
