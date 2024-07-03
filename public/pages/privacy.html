@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - EstateEase</title>
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container navbar__inner">
+        <a class="brand" href="../index.html">
+            <img src="../assets/images/logo.svg" alt="EstateEase logo" class="brand__logo">
+            <span class="brand__name">EstateEase</span>
+        </a>
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" data-nav-toggle>&#9776;</button>
+        <nav class="nav__links" id="primary-nav">
+            <a href="../index.html">Home</a>
+            <a href="../properties.html">Properties</a>
+            <a href="../about.html">About</a>
+            <a href="../contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="section">
+    <div class="container" style="max-width:820px;">
+        <div class="section-heading section-heading--left">
+            <h1>Privacy policy</h1>
+            <p class="muted">Last updated: 3 July 2024</p>
+        </div>
+
+        <p>EstateEase is a coursework project. We collect the minimum information required to let you create an account, record properties, and log sales. Your data lives in a MySQL database on the machine where the application is deployed.</p>
+
+        <h3>What we store</h3>
+        <ul>
+            <li>Account: first name, last name, email, bcrypt hash of your password.</li>
+            <li>Properties you add: name, area, amount, purchase date, optional photo.</li>
+            <li>Sales you record: sale date, total amount, received amount, next installment date.</li>
+        </ul>
+
+        <h3>What we do not do</h3>
+        <ul>
+            <li>We never sell or share your data with third parties.</li>
+            <li>We never store passwords in plain text.</li>
+            <li>We do not use third-party analytics or advertising trackers.</li>
+        </ul>
+
+        <h3>Your rights</h3>
+        <p>You can request deletion of your account at any time by emailing <a href="mailto:hello@estateease.test">hello@estateease.test</a>. Cascade delete rules ensure all associated records are removed.</p>
+    </div>
+</section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__bottom" style="border-top:none;">
+            <span>&copy; 2024 EstateEase. All rights reserved.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

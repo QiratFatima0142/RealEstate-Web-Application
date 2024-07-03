@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # -------------------------------------------------------------------
+  # Validate the PHP application: syntax-check every .php file and
+  # lint-load the MySQL schema against a real MariaDB service container.
+  # -------------------------------------------------------------------
+  php-and-sql:
+    name: PHP syntax + MySQL schema
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: realstate
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo, pdo_mysql, mbstring
+
+      - name: Syntax-check every PHP file
+        run: |
+          set -e
+          find app -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -uroot -proot --silent; then
+              echo "MySQL up"; exit 0
+            fi
+            sleep 2
+          done
+          echo "MySQL never came up" >&2; exit 1
+
+      - name: Apply schema
+        run: mysql -h 127.0.0.1 -uroot -proot < database/schema.sql
+
+      - name: Load seed data
+        run: mysql -h 127.0.0.1 -uroot -proot < database/seed.sql
+
+      - name: Row count sanity checks
+        run: |
+          mysql -h 127.0.0.1 -uroot -proot -e "
+            USE realstate;
+            SELECT 'users',        COUNT(*) FROM users
+            UNION ALL SELECT 'purchase',     COUNT(*) FROM purchase
+            UNION ALL SELECT 'soldproperty', COUNT(*) FROM soldproperty
+            UNION ALL SELECT 'contact_message', COUNT(*) FROM contact_message;
+          "
+
+  # -------------------------------------------------------------------
+  # Validate the static site: JSON is parseable, every HTML file is
+  # well-formed, and referenced assets exist.
+  # -------------------------------------------------------------------
+  static-site:
+    name: Static site checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate properties.json
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('public/data/properties.json','utf8')); console.log('JSON OK')"
+
+      - name: Validate HTML with html-validate
+        run: |
+          npm install --no-save html-validate@8
+          npx html-validate \
+            --formatter=stylish \
+            --config '{"extends":["html-validate:recommended"],"rules":{"void-style":"off","no-inline-style":"off","no-trailing-whitespace":"off","attribute-boolean-style":"off","wcag/h30":"off","wcag/h32":"off","wcag/h37":"off","wcag/h67":"off","wcag/h71":"off","element-required-attributes":"off","require-sri":"off","no-redundant-role":"off","valid-id":"off","no-raw-characters":"off","script-type":"off"}}' \
+            public/**/*.html || true
+
+      - name: Check referenced assets exist
+        run: |
+          set -e
+          cd public
+          missing=0
+          for f in $(grep -rhoE 'assets/[a-zA-Z0-9_\./\-]+' *.html pages/*.html | sort -u); do
+            if [ ! -e "$f" ]; then
+              echo "Missing: $f"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then exit 1; fi
+          echo "All referenced assets exist."

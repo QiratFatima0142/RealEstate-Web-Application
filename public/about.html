@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - EstateEase</title>
+    <meta name="description" content="Learn about EstateEase, a real estate management web application built for Web Application Development coursework.">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container navbar__inner">
+        <a class="brand" href="index.html">
+            <img src="assets/images/logo.svg" alt="EstateEase logo" class="brand__logo">
+            <span class="brand__name">EstateEase</span>
+        </a>
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" data-nav-toggle>&#9776;</button>
+        <nav class="nav__links" id="primary-nav">
+            <a href="index.html">Home</a>
+            <a href="properties.html">Properties</a>
+            <a href="about.html" class="is-active">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn--ghost btn--sm nav__cta">Sign In</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="section">
+    <div class="container" style="max-width:820px;">
+        <div class="section-heading section-heading--left">
+            <h1>About EstateEase</h1>
+            <p>A university Web Application Development project rebuilt to portfolio quality.</p>
+        </div>
+
+        <p>EstateEase was created as the capstone for a Web Application Development course in July 2024. The goal was to ship a realistic, multi-page web application that uses a real database, handles authentication, and supports file uploads - all with a polished, responsive UI.</p>
+
+        <h3>What it does</h3>
+        <ul>
+            <li>Lets agents and owners track properties they have purchased (name, area, price, date, photo).</li>
+            <li>Records sales with partial-payment support (received amount, next installment date).</li>
+            <li>Summarises the portfolio value, revenue, and pipeline on a personal dashboard.</li>
+            <li>Exposes a public-facing listings page for browsing.</li>
+        </ul>
+
+        <h3>How it is built</h3>
+        <ul>
+            <li><strong>Frontend:</strong> semantic HTML5, responsive CSS with custom properties, vanilla JavaScript - no frameworks, no build step.</li>
+            <li><strong>Backend:</strong> PHP 8 using PDO, prepared statements, bcrypt password hashing, and CSRF protection.</li>
+            <li><strong>Database:</strong> MySQL 8 with foreign keys, indexes, cascade rules, and check constraints.</li>
+            <li><strong>CI/CD:</strong> GitHub Actions validates HTML, CSS, PHP syntax, and the MySQL schema on every push.</li>
+            <li><strong>Deployment:</strong> the static preview is published to GitHub Pages; the full PHP app runs on XAMPP, Docker, or any PHP-capable host.</li>
+        </ul>
+
+        <h3>Architecture at a glance</h3>
+        <div class="grid grid--2 mt-2">
+            <div class="tile">
+                <div class="tile__icon">&#127760;</div>
+                <div class="tile__title">Static site (this one)</div>
+                <p class="tile__desc">HTML / CSS / JS deployed to GitHub Pages. Loads listings from <code>data/properties.json</code>, client-side filtering, persistent favourites via <code>localStorage</code>.</p>
+            </div>
+            <div class="tile">
+                <div class="tile__icon">&#128187;</div>
+                <div class="tile__title">PHP application</div>
+                <p class="tile__desc">Authenticated portal in <code>app/</code> - login, signup, dashboard, CRUD on purchases and sales, photo uploads. Runs on XAMPP or Docker.</p>
+            </div>
+        </div>
+
+        <h3>The team</h3>
+        <p>Developed by <strong>Qirat Fatima</strong> as coursework at the University of Central Punjab (UCP), Lahore.</p>
+    </div>
+</section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__bottom" style="border-top:none;">
+            <span>&copy; 2024 EstateEase. All rights reserved.</span>
+            <span>Built for Web Application Development, University of Central Punjab.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

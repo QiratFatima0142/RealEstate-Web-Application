@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstateEase - Real Estate Management Portal</title>
+    <meta name="description" content="EstateEase - the smarter way to manage real estate. Track purchases, close sales, and follow installments in one secure portal.">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="./index.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container navbar__inner">
+        <a class="brand" href="index.html">
+            <img src="assets/images/logo.svg" alt="EstateEase logo" class="brand__logo">
+            <span class="brand__name">EstateEase</span>
+        </a>
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" data-nav-toggle>&#9776;</button>
+        <nav class="nav__links" id="primary-nav">
+            <a href="index.html" class="is-active">Home</a>
+            <a href="properties.html">Properties</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn--ghost btn--sm nav__cta">Sign In</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="container hero__content">
+        <span class="badge">Real Estate Management Portal</span>
+        <h1 style="margin-top:1rem;">Find, buy, and manage properties with confidence.</h1>
+        <p>EstateEase helps agents and owners track purchases, manage sales, and follow installment schedules - all in one secure portal.</p>
+
+        <div class="hero__actions">
+            <a href="properties.html" class="btn btn--primary">Browse Properties</a>
+            <a href="about.html" class="btn btn--ghost">How it works</a>
+        </div>
+
+        <form class="hero__search" role="search" onsubmit="location.href='properties.html?q='+encodeURIComponent(this.q.value);return false;">
+            <input type="search" name="q" placeholder="Search by city, name, or type..." aria-label="Search properties">
+            <button type="submit" class="btn btn--primary btn--sm">Search</button>
+        </form>
+
+        <div class="stats">
+            <div class="stat"><div class="stat__value">500+</div><div class="stat__label">Listings</div></div>
+            <div class="stat"><div class="stat__value">120+</div><div class="stat__label">Closed Deals</div></div>
+            <div class="stat"><div class="stat__value">12</div><div class="stat__label">Cities Covered</div></div>
+            <div class="stat"><div class="stat__value">98%</div><div class="stat__label">Client Satisfaction</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Why EstateEase</h2>
+            <p>A focused toolkit that replaces spreadsheets with a real database, secure authentication, and a clean dashboard.</p>
+        </div>
+        <div class="grid grid--cards">
+            <article class="tile">
+                <div class="tile__icon">&#9873;</div>
+                <div class="tile__title">Track Purchases</div>
+                <p class="tile__desc">Record every property you acquire with name, area, price, and photos - all backed by a real MySQL database.</p>
+            </article>
+            <article class="tile">
+                <div class="tile__icon">&#128176;</div>
+                <div class="tile__title">Manage Sales</div>
+                <p class="tile__desc">Follow the full lifecycle: mark a property as sold, log received amounts, and schedule next installments.</p>
+            </article>
+            <article class="tile">
+                <div class="tile__icon">&#128202;</div>
+                <div class="tile__title">Dashboard Analytics</div>
+                <p class="tile__desc">See portfolio value, open installments, and recent activity at a glance - no more hunting through files.</p>
+            </article>
+            <article class="tile">
+                <div class="tile__icon">&#128274;</div>
+                <div class="tile__title">Secure by Default</div>
+                <p class="tile__desc">Bcrypt password hashing, CSRF-protected forms, session regeneration, and prepared SQL statements everywhere.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section section--subtle">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Featured properties</h2>
+            <p>Hand-picked listings from across the portal.</p>
+        </div>
+        <div id="featured-grid" class="grid grid--cards" aria-live="polite">
+            <div class="empty-state">Loading properties...</div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="properties.html" class="btn btn--outline">See all listings &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width:760px;">
+        <div class="section-heading">
+            <h2>How it works</h2>
+        </div>
+        <ol style="list-style:none;padding:0;counter-reset:step;">
+            <li style="counter-increment:step;margin-bottom:1.5rem;padding-left:3.5rem;position:relative;">
+                <span style="position:absolute;left:0;top:0;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">1</span>
+                <h3>Create your account</h3>
+                <p class="muted">Sign up with your email and a secure password. Your password is hashed with bcrypt before it ever touches the database.</p>
+            </li>
+            <li style="counter-increment:step;margin-bottom:1.5rem;padding-left:3.5rem;position:relative;">
+                <span style="position:absolute;left:0;top:0;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">2</span>
+                <h3>Record a purchase</h3>
+                <p class="muted">Add property details - name, area, total amount, purchase date, and an optional photo. Everything lands in a normalised MySQL table.</p>
+            </li>
+            <li style="counter-increment:step;margin-bottom:1.5rem;padding-left:3.5rem;position:relative;">
+                <span style="position:absolute;left:0;top:0;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">3</span>
+                <h3>Close a sale</h3>
+                <p class="muted">When you sell, log the sale total, amount received, and the next installment date. EstateEase tracks outstanding balances for you.</p>
+            </li>
+            <li style="counter-increment:step;padding-left:3.5rem;position:relative;">
+                <span style="position:absolute;left:0;top:0;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">4</span>
+                <h3>Measure &amp; optimise</h3>
+                <p class="muted">Your dashboard tallies portfolio value and revenue received, so you always know the state of your business.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__cols">
+            <div>
+                <h4>EstateEase</h4>
+                <p style="color:#9ca3af;font-size:0.9rem;">The smarter way to manage real estate. Track purchases, manage sales, and close deals confidently.</p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Forgot password</a></li>
+                </ul>
+                <p style="font-size:0.75rem;color:#6b7280;margin-top:0.5rem;">Auth runs in the PHP app.</p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="pages/privacy.html">Privacy</a></li>
+                    <li><a href="pages/terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>&copy; 2024 EstateEase. All rights reserved.</span>
+            <span>Built for Web Application Development, University of Central Punjab.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/properties.js" defer></script>
+</body>
+</html>

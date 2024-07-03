@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - EstateEase</title>
+    <meta name="description" content="Browse every property listed on EstateEase. Filter by city, type, price, and size.">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container navbar__inner">
+        <a class="brand" href="index.html">
+            <img src="assets/images/logo.svg" alt="EstateEase logo" class="brand__logo">
+            <span class="brand__name">EstateEase</span>
+        </a>
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" data-nav-toggle>&#9776;</button>
+        <nav class="nav__links" id="primary-nav">
+            <a href="index.html">Home</a>
+            <a href="properties.html" class="is-active">Properties</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn btn--ghost btn--sm nav__cta">Sign In</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="section">
+    <div class="container">
+        <div class="section-heading section-heading--left">
+            <h1>Browse properties</h1>
+            <p>All listings on EstateEase. Use the filters to find exactly what you need.</p>
+        </div>
+
+        <form class="filter-bar" id="filter-bar" role="search" onsubmit="event.preventDefault();">
+            <input class="form__input" type="search" id="f-query" name="q" placeholder="Search by name, city, or type...">
+            <select class="form__select" id="f-city" name="city">
+                <option value="">All cities</option>
+            </select>
+            <select class="form__select" id="f-type" name="type">
+                <option value="">All types</option>
+            </select>
+            <select class="form__select" id="f-sort" name="sort">
+                <option value="recent">Newest first</option>
+                <option value="price_asc">Price: low to high</option>
+                <option value="price_desc">Price: high to low</option>
+                <option value="area_desc">Largest first</option>
+            </select>
+        </form>
+
+        <p id="result-count" class="muted mb-2">&nbsp;</p>
+
+        <div id="property-grid" class="grid grid--cards" aria-live="polite">
+            <div class="empty-state">Loading properties...</div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__cols">
+            <div>
+                <h4>EstateEase</h4>
+                <p style="color:#9ca3af;font-size:0.9rem;">The smarter way to manage real estate.</p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="pages/privacy.html">Privacy</a></li>
+                    <li><a href="pages/terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>&copy; 2024 EstateEase. All rights reserved.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/properties.js" defer></script>
+</body>
+</html>

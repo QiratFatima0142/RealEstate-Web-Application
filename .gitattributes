@@ -1,0 +1,29 @@
+* text=auto eol=lf
+*.php     text eol=lf diff=php
+*.html    text eol=lf diff=html
+*.css     text eol=lf diff=css
+*.js      text eol=lf
+*.json    text eol=lf
+*.sql     text eol=lf diff=sql
+*.md      text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.ico binary
+
+# Linguist overrides so GitHub reports the main stack accurately.
+*.php linguist-detectable=true
+*.php linguist-language=PHP
+*.html linguist-detectable=true
+*.html linguist-language=HTML
+*.css linguist-detectable=true
+*.css linguist-language=CSS
+*.js linguist-detectable=true
+*.js linguist-language=JavaScript
+*.sql linguist-detectable=true
+*.sql linguist-language=SQL
+*.yml linguist-detectable=false
